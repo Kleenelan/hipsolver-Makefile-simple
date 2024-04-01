@@ -30,10 +30,11 @@ src/common/hipsolver_compat_common.cpp
 OBJ_CXX := $(SRC_CXX:.cpp=.o)
 
 FC := gfortran
-CXX_FLAGS := $(DEBUG_FLAG) -fPIC -Wall -fopenmp -std=c++17
+CXX_FLAGS := $(DEBUG_FLAG) -fPIC -Wall -fopenmp -std=c++17 -D__HIP_PLATFORM_AMD__ 
 INC := -I./include -I./include/internal -I./src/include -I/opt/rocm/include
 LD_FLAGS := -L/opt/rocm/lib  -lamdhip64 -lrocblas
-CXX := hipcc
+#CXX := hipcc
+CXX := g++
 
 INSTALL_PREFIX := /opt/rocm
 
